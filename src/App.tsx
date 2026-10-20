@@ -13,7 +13,7 @@ function EmployeeList() {
     <>
       <div>
         <div>
-          <h3><b>Employee Management</b></h3>
+          <h3 className='text-2xl font-bold text-blue-700'><b>Employee Management</b></h3>
         <p>Manage your employee</p>
         </div>
         <div>
