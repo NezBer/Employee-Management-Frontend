@@ -8,18 +8,38 @@ function EmployeeList() {
     { id: 3, name: "Anan", department: "Finance" },
   ];
 
+  const departments = [...new Set(employees.map(emp => emp.department))];
 
   return (
     <>
-      <div>
+      <div className='flex items-center justify-between pr-3'>
         <div>
-          <h3 className='text-2xl font-bold text-blue-700'><b>Employee Management</b></h3>
+          <h3 className='text-2xl font-bold text-blue-700 '>Employee Management</h3>
         <p>Manage your employee</p>
         </div>
         <div>
-          <button>+ Add Employee</button>
+          <button className='bg-blue-500 rounded-lg px-4 py-2 font-medium text-white hover:bg-blue-700'>+ Add Employee</button>
           </div>
+        </div>
         <div>
+         <div className='my-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4'>
+          {departments.map(department => {
+            const count = employees.filter(emp => emp.department === department).length;
+
+            return (
+              <div key={department} className='rounded-lg border border-gray-200 bg-white p-3 shadow-sm '>
+                <h3 className="text-lg font-semibold">{department}</h3>
+                <p className="mt-2 text-3xl font-bold text-blue-600">
+          {count}
+          <span className="ml-2 text-sm font-normal text-gray-500">
+            คน
+          </span>
+        </p>
+
+              </div>
+            );
+          })}
+         </div>
           <h3>Employee List</h3>
           <table>
             <thead>
@@ -49,7 +69,6 @@ function EmployeeList() {
           </tbody>
           </table>
         </div>
-      </div>
     </>
   )
 }
