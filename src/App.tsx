@@ -1,6 +1,9 @@
+import { useState } from 'react';
 import './App.css'
 
 function EmployeeList() {
+
+  const [searchEmp,setSearchEmp] = useState("");
 
   const employees = [
     { id: 1, name: "Somchai", department: "IT" },
@@ -9,6 +12,9 @@ function EmployeeList() {
   ];
 
   const departments = [...new Set(employees.map(emp => emp.department))];
+  const filterEmployees = employees.filter((emp) => {
+    return emp.name.includes(searchEmp);
+  });
 
   return (
     <>
@@ -41,6 +47,9 @@ function EmployeeList() {
           })}
          </div>
           <h3>Employee List</h3>
+          <div className='my-4'>
+          <input type="text" placeholder='ค้นหาพนักงาน' value={searchEmp} onChange={(e) => setSearchEmp(e.target.value)} className="w-150 rounded-lg border border-gray-300 px-4 py-2 mx-2"/>
+          </div>
           <table>
             <thead>
               <tr>
@@ -50,9 +59,9 @@ function EmployeeList() {
             </tr>
             </thead>
             <tbody>
-            {employees.length > 0 
+            {filterEmployees.length > 0 
               ? (
-                employees.map((emp) => {
+                filterEmployees.map((emp) => {
                   return (
                     <tr key={emp.id}>
                       <td>{emp.id}</td>
