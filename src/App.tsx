@@ -53,9 +53,9 @@ function EmployeeList() {
           <table>
             <thead>
               <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Department</th>
+            <th className='px-3 py-2'>ID</th>
+            <th className='px-3 py-2'>Name</th>
+            <th className='px-3 py-2'>Department</th>
             </tr>
             </thead>
             <tbody>
@@ -72,7 +72,9 @@ function EmployeeList() {
                 })
               )
             : (
-              <h2>ไม่พบข้อมูล</h2>
+              <tr>
+                <td colSpan={3} className='px-3 py-2 text-center'>ไม่พบข้อมูล</td>
+              </tr>
             )
             }
           </tbody>
