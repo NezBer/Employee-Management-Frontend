@@ -4,6 +4,7 @@ import './App.css'
 function EmployeeList() {
 
   const [searchEmp,setSearchEmp] = useState("");
+  const [selectDep,setSelectDep] = useState("All");
 
   const employees = [
     { id: 1, name: "Somchai", department: "IT" },
@@ -13,7 +14,7 @@ function EmployeeList() {
 
   const departments = [...new Set(employees.map(emp => emp.department))];
   const filterEmployees = employees.filter((emp) => {
-    return emp.name.includes(searchEmp);
+    return emp.name.includes(searchEmp) && (selectDep === "All" || emp.department.includes(selectDep));
   });
 
   return (
@@ -49,6 +50,13 @@ function EmployeeList() {
           <h3>Employee List</h3>
           <div className='my-4'>
           <input type="text" placeholder='ค้นหาพนักงาน' value={searchEmp} onChange={(e) => setSearchEmp(e.target.value)} className="w-150 rounded-lg border border-gray-300 px-4 py-2 mx-2"/>
+          <select value={selectDep} onChange={(e) => setSelectDep(e.target.value)}   className="department-select rounded-lg border border-gray-300 bg-white px-4 py-2"
+>
+              <option value="All">ทุกแผนก</option>
+              <option value="IT">IT</option>
+              <option value="HR">HR</option>
+              <option value="Finance">Finance</option>
+            </select>
           </div>
           <table>
             <thead>
