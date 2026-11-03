@@ -5,6 +5,9 @@ function EmployeeList() {
 
   const [searchEmp,setSearchEmp] = useState("");
   const [selectDep,setSelectDep] = useState("All");
+  const [showForm,setShowForm] = useState(false);
+  const [empName,setEmpName] = useState("");
+  const [empDpm,setEmpDpm] = useState("")
 
   const employees = [
     { id: 1, name: "Somchai", department: "IT" },
@@ -25,7 +28,7 @@ function EmployeeList() {
         <p>Manage your employee</p>
         </div>
         <div>
-          <button className='bg-blue-500 rounded-lg px-4 py-2 font-medium text-white hover:bg-blue-700'>+ Add Employee</button>
+          <button className='bg-blue-500 rounded-lg px-4 py-2 font-medium text-white hover:bg-blue-700' onClick={()=>setShowForm(true)}>+ Add Employee</button>
           </div>
         </div>
         <div>
@@ -88,6 +91,30 @@ function EmployeeList() {
           </tbody>
           </table>
         </div>
+
+        {/* Form Add EMP */}
+        {showForm && (
+          <div>
+            <div>
+          <p>ชื่อ</p>
+          <input className='border rounded border-gray-200' type="text" placeholder='ชื่อพนักงาน' value={empName} onChange={(e)=>setEmpName(e.target.value)}/>
+
+          <p>แผนก</p>
+          <select value={empDpm} onChange={(e)=> setEmpDpm(e.target.value)}>
+            <option value="">เลือกแผนก</option>
+            {departments.map((department) => {
+              return (
+                <option key={department} value={department}>
+                  {department}
+                </option>
+              )
+            })}
+          </select>
+
+          <button className='rounded-lg border border-gray-300 px-3 py-2' onClick={()=>setShowForm(false)}>Cancel</button>
+            </div>
+          </div>
+        )}
     </>
   )
 }
