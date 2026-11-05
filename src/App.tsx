@@ -3,17 +3,17 @@ import './App.css'
 
 function EmployeeList() {
 
+  const [employees,setEmployees] = useState([
+    { id: 1, name: "Somchai", department: "IT" },
+    { id: 2, name: "Somsri", department: "HR" },
+    { id: 3, name: "Anan", department: "Finance" },
+  ]);
+
   const [searchEmp,setSearchEmp] = useState("");
   const [selectDep,setSelectDep] = useState("All");
   const [showForm,setShowForm] = useState(false);
   const [empName,setEmpName] = useState("");
   const [empDpm,setEmpDpm] = useState("")
-
-  const employees = [
-    { id: 1, name: "Somchai", department: "IT" },
-    { id: 2, name: "Somsri", department: "HR" },
-    { id: 3, name: "Anan", department: "Finance" },
-  ];
 
   const departments = [...new Set(employees.map(emp => emp.department))];
   const filterEmployees = employees.filter((emp) => {
