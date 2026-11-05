@@ -20,6 +20,16 @@ function EmployeeList() {
     return emp.name.includes(searchEmp) && (selectDep === "All" || emp.department.includes(selectDep));
   });
 
+function handleAddEmployee() {
+  const newEmployee = {
+    id: 4,
+    name: empName,
+    department: empDpm
+  };
+  setEmployees([...employees,newEmployee]);
+  setShowForm(false);
+}
+
   return (
     <>
       <div className='flex items-center justify-between pr-3'>
@@ -112,6 +122,7 @@ function EmployeeList() {
           </select>
 
           <button className='rounded-lg border border-gray-300 px-3 py-2' onClick={()=>setShowForm(false)}>Cancel</button>
+          <button className='rounded-lg border border-green-300 px-3 py-2 mx-3' onClick={handleAddEmployee}>Save</button>
             </div>
           </div>
         )}
