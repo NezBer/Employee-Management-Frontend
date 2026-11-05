@@ -121,8 +121,8 @@ function handleAddEmployee() {
             })}
           </select>
 
-          <button className='rounded-lg bg-red-300 px-3 py-2' onClick={()=>setShowForm(false)}>Cancel</button>
-          <button className='rounded-lg bg-green-500 px-4 py-2 mx-3' onClick={handleAddEmployee}>Save</button>
+          <button className='rounded-lg bg-gray-200 px-4 py-2 text-gray-700 hover:bg-gray-300' onClick={()=>setShowForm(false)}>Cancel</button>
+          <button className='rounded-lg bg-green-600 px-4 py-2 text-white hover:bg-green-700' onClick={handleAddEmployee}>Save</button>
             </div>
           </div>
         )}
